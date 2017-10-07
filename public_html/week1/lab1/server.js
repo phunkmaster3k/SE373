@@ -14,7 +14,7 @@ http.createServer(function (request, response) {
         fileName = 'todo.json'
     } else if (fileName === 'read-todo') {
         contentType = 'text/html'
-        fileName = 'fetch.html'
+        fileName = 'read-todo.html'
 
     } else {
         contentType = 'text/html'
