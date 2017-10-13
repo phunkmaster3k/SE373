@@ -1,0 +1,9 @@
+extends layout
+
+block content
+    h2= title
+    p text #{title} text
+    form(method="post" action="/form")
+        input(type="text" name="email")
+        input(type="submit")
+
