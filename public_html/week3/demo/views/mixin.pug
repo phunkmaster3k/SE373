@@ -7,16 +7,16 @@ mixin outputReviews(results)
                 th Review Text
                 th Created On
         tbody
-          each stuff in results
+          each result in results
             tr
                 td 
-                    = stuff.author
+                    = result.author
                 td 
-                    = stuff.rating
+                    = result.rating
                 td 
-                    = stuff.reviewText
+                    = result.reviewText
                 td 
-                    +formatDate(stuff.createdOn)           
+                    +formatDate(result.createdOn)
 
 mixin formatDate(dateString)
   -var date = new Date(dateString);
