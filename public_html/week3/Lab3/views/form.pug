@@ -1,0 +1,12 @@
+extends layout
+
+block content
+    h2= title
+    form(action="/form", method="post")
+        input(type="submit")
+        select(name="picker")
+          each item in items
+            option(value=item) #{item}
+
+    div
+        +outputGrid(pickVal)

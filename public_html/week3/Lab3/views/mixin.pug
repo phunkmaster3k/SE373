@@ -1,0 +1,15 @@
+mixin outputGrid(value)
+    table(border="0")
+        tbody
+            -var col = 0
+            while col < value
+                tr
+                -col++
+                    -var row = 0
+                    while row < value
+                        -var color = ((1<<24)*Math.random()|0).toString(16);
+                        td(style=`background-color:#${color}`) #{color}
+                            br
+                            span(style="color:#ffffff") #{color}
+                        -row++
+
