@@ -1,5 +1,5 @@
 mixin outputGrid(value)
-    table(border="0")
+    table(class="table table-bordered" style="width:100px")
         tbody
             -var col = 0
             while col < value
@@ -13,3 +13,11 @@ mixin outputGrid(value)
                             span(style="color:#ffffff") #{color}
                         -row++
 
+mixin mix404()
+    -var x = 0
+    -var anims = ["still", "shrink", "rotate"]
+    -var totalDivs = (Math.floor(Math.random() * (31)) + 20);
+    while x < totalDivs
+        -var ind = (Math.floor(Math.random() * 3))
+        div( class=anims[ind]) 404
+        -x++

@@ -6,12 +6,10 @@ var menuItems = [2,4,5,10,20];
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'Lab 3' });
 });
 
 router.get('/form', function(req, res, next) {
-
-
     res.render('form', { title: 'Form Page', items: menuItems });
 });
 
