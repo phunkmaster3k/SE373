@@ -1,20 +1,20 @@
 extends layout
 
 block content
-    div(class="container")
+    div.container
         h2= title
-        div(class="container")
-            form(method="post" action="/form" class="form-horizontal")
+        div.container
+            form.form-horizontal(method="post" action="/form")
                 label Name
-                input(type="text" name="name" class="form-control")
+                input.form-control(type="text" name="name")
                 label Email
-                input(type="text" name="email" class="form-control")
+                input.form-control(type="text" name="email")
                 label Comments
-                textarea( name="comment", rows="5", cols="20" class="form-control")
+                textarea.form-control( name="comment", rows="5", cols="20")
                 br
-                input(type="submit" class="btn")
+                input.btn(type="submit")
     br
-    div(class="container")
+    div.container
         | Name: &nbsp
         strong= name
         br

@@ -1,13 +1,13 @@
 extends layout
 
 block content
-    div(class="container")
-        form(action="/form", method="post" class="form-horizontal")
-            select(name="picker" class="btn btn-default dropdown-toggle" )
+    div.container
+        form.form-horizontal(action="/form", method="post" )
+            select.btn.btn-default.dropdown-toggle(name="picker" )
               each item in items
                 option(value=item) #{item}
-            input(type="submit" class="btn")
+            input.btn(type="submit")
 
     br
-    div(class="container")
+    div.container
         +outputGrid(pickVal)
