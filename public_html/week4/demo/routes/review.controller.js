@@ -7,7 +7,8 @@ module.exports.home = function(req, res){
     if (req.method === 'POST') {
         
        var msg = '';
-        
+
+       //creates new row in db
         Review.create({
           author: req.body.name,
           rating: req.body.rating,
@@ -17,10 +18,11 @@ module.exports.home = function(req, res){
             msg = 'Review was Saved';
             return;
         })
-        .catch(function(err){            
+        .catch(function(err){     //executed if throws exception
             msg = 'Review was not Saved';
             return err.message;
-        }).then(function(err){
+        })
+        .then(function(err){    //like final, always executed
             res.render('index', { 
                 title: 'home',
                 message : msg,
@@ -38,11 +40,7 @@ module.exports.home = function(req, res){
 };
 
 module.exports.view = function(req, res){
-    
-     var id = req.params.id,
-         removed = '';
- 
-    function finish() {     
+
        Review
        .find()
        .exec()
@@ -50,25 +48,35 @@ module.exports.view = function(req, res){
             res.render('view', { 
                 title: 'View Results',
                 results : results,
-                removed : removed
             });
        });
-    }
+
     
-     if ( id ) {        
+
+};
+
+module.exports.delete = function(req, res){
+
+    var id = req.params.id,
+        removed = '';
+
         Review.remove({ _id: id })
-        .then(function(){            
-            removed = `${id} has been removed`;
-            finish();
-        })
-        .catch(function (err) {            
-            removed = `${id} has not been removed`;
-            finish(); 
-        });                           
-     } else {
-      finish();
-    }
-     
+            .then(function(){
+                removed = `${id} has been removed`;
+                return;
+            })
+            .catch(function (err) {
+                removed = `${id} has not been removed`;
+                return err;
+            })
+            .then( (err) => {   //alternative function syntax
+                res.render('delete', {
+                    removed : removed
+                });
+
+        });
+
+
 };
 
 
@@ -90,6 +98,7 @@ module.exports.update = function(req, res){
                 reviewData.rating = req.body.rating;
                 reviewData.reviewText = req.body.reviewText;
 
+                debug(req.body);
                 return reviewData.save();
                                 
             })

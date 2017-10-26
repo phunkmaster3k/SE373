@@ -5,8 +5,11 @@ var ctrlHome = require('./review.controller');
 
 router.all('/', ctrlHome.home);
 router.all('/index', ctrlHome.home);
+
+//:id? is optional because of ?
 router.all('/update/:id?', ctrlHome.update);
-router.all('/view/:id?', ctrlHome.view);
+router.all('/view', ctrlHome.view);
+router.all('/delete/:id?', ctrlHome.delete);
 
 
 module.exports = router;

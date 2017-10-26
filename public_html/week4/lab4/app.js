@@ -5,8 +5,6 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-require('./db');
-
 var index = require('./routes/index');
 var users = require('./routes/users');
 
@@ -45,5 +43,4 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-require('express-debug')(app);
 module.exports = app;

@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var debug = require('debug')('demo:mongo');
 var gracefulShutdown;
+//creates database, change reviews
 var dbURI = 'mongodb://localhost/Reviews';
 if (process.env.NODE_ENV === 'production') {
     dbURI = process.env.MONGOLAB_URI;
