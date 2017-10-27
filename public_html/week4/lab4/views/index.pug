@@ -1,34 +1,40 @@
 extends layout
 
 block content
-  h1= title
-  form.form-horizontal(action="/", method="post", role="form")
-    .form-group
-      label.control-label(for="firstname") First Name
-      .col
-        input#firstname.form-control(name="firstname")
-    .form-group
-      label.control-label(for="lastname") Last Name
-      .col
-        input#lastname.form-control(name="lastname")
-    .form-group
-      label.control-label(for="department") Department
-      .col
-        select#department.form-control.input-sm(name="")
-          option Office
-          option Dock
-          option Warehouse
-    .form-group
-      label.control-label(for="startDate") Start Date
-      .col
-        input#startDate.form-control(name="startDate")
-    .form-group
-      label.control-label(for="jobTitle") Job Title
-      .col
-        input#jobTitle.form-control(name="jobTitle")
-    .form-group
-      label.control-label(for="salary") Salary
-      .col
-        input#salary.form-control(name="salary")
-    input(type="submit" value="Add Employee")
+  h2=message
+  div.container
+    form.form-horizontal(action="/", method="post", role="form")
+      .form-group
+        label.control-label(for="firstname") First Name
+        .col
+          input#firstname.form-control(name="firstname")
+      .form-group
+        label.control-label(for="lastname") Last Name
+        .col
+          input#lastname.form-control(name="lastname")
+      .form-group
+        label.control-label(for="department") Department
+        .col
+          select#department.form-control.input-sm(name="department")
+            option Office
+            option Dock
+            option Warehouse
+      .form-group
+        label.control-label(for="startDate") Start Date
+        .col
+          input#startDate.form-control(name="startDate")
+      .form-group
+        label.control-label(for="jobTitle") Job Title
+        .col
+          input#jobTitle.form-control(name="jobTitle")
+      .form-group
+        label.control-label(for="salary") Salary
+        .col
+          input#salary.form-control(name="salary")
+      input(type="submit" value="Add Employee")
+    br
+    if errors !== undefined
+      ul
+        each error in errors
+          li=error
 

@@ -1,6 +1,6 @@
 
 var Employee = require('./employee.model');
-var debug = require('debug')('demo:review');
+var debug = require('debug')('lab4:employee');
 
 module.exports.home = function(req, res){
         
@@ -8,31 +8,31 @@ module.exports.home = function(req, res){
         
        var msg = '';
 
-       //creates new row in db
         Employee.create({
-          author: req.body.name,
-          rating: req.body.rating,
-          reviewText: req.body.review
+          firstname: req.body.firstname,
+          lastname: req.body.lastname,
+          department: req.body.department,
+          startDate: req.body.startDate,
+          jobTitle: req.body.jobTitle,
+          salary: req.body.salary
         })
         .then(function(){
-            msg = 'Review was Saved';
+            msg = 'Employee Saved';
             return;
         })
-        .catch(function(err){     //executed if throws exception
-            msg = 'Review was not Saved';
-            return err.message;
+        .catch(function(err){
+            msg = 'Employee not saved';
+            return err.errors;
         })
-        .then(function(err){    //like final, always executed
-            res.render('index', { 
-                title: 'home',
+        .then(function(err){
+            res.render('index', {
                 message : msg,
-                error: err
+                errors: err
              });
         });   
               
     } else {
-        res.render('index', { 
-            title: 'home',
+        res.render('index', {
             message : ''
         }); 
     }

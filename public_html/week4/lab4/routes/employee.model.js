@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var reviewSchema = new mongoose.Schema({
+var employeeSchema = new mongoose.Schema({
     firstname: {
         type: String,
         required: [true, 'First name is required']
@@ -15,20 +15,18 @@ var reviewSchema = new mongoose.Schema({
     },
     startDate: {
         type: Date,
-        "default": Date.now,
-        required: [true, 'date is required']
+        required: [true, 'Start date is required']
     },
     jobTitle: {
         type: String,
         required: [true, 'Title is required']
     },
     salary: {
-        type: String,
+        type: Number,
         required: [true, 'Salary is required']
     }
 });
 
-//Review is table name
-var Employee = mongoose.model('employee', reviewSchema);
+var Employee = mongoose.model('employee', employeeSchema);
 
 module.exports = Employee;

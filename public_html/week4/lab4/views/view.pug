@@ -1,0 +1,40 @@
+extends layout
+
+block content
+    if results.length
+        table(border="1")
+            thead   
+                tr
+                    th First Name
+                    th Last Name
+                    th Department
+                    th Start Date
+                    th Job Title
+                    th Salary
+                    th
+                    th
+            tbody
+              each result in results
+                tr
+                    td 
+                        =result.firstname
+                    td 
+                        =result.lastname
+                    td 
+                        =result.department
+                    td
+                        -var date = new Date(result.startDate);
+                        -var d = date.getDate()
+                        -var m = date.getMonth()+1
+                        -var y = date.getFullYear()
+                        =`${m}/${d}/${y}`
+                    td
+                        =result.jobTitle
+                    td
+                        =result.salary
+                    td
+                        a(href="../update/"+result._id) Update
+                    td
+                        a(href="../delete/"+result._id) Delete
+    else
+        p No results found
