@@ -1,34 +1,40 @@
 extends layout
 
 block content
+    h2=message
     div.container
-        form.form-horizontal(action="/", method="post", role="form")
+        form.form-horizontal(action="/update", method="post", role="form")
             .form-group
                 label.control-label(for="firstname") First Name
                 .col
-                    input#firstname.form-control(name="firstname")
+                    input#firstname.form-control(name="firstname" value=results.firstname)
             .form-group
                 label.control-label(for="lastname") Last Name
                 .col
-                    input#lastname.form-control(name="lastname")
+                    input#lastname.form-control(name="lastname" value=results.lastname)
             .form-group
                 label.control-label(for="department") Department
                 .col
-                    select#department.form-control.input-sm(name="department")
-                        option Office
-                        option Dock
-                        option Warehouse
+                    select#department.form-control.input-sm(name="department" )
+                        option(selected=results.department == "Office") Office
+                        option(selected=results.department == "Dock") Dock
+                        option(selected=results.department == "Warehouse") Warehouse
             .form-group
                 label.control-label(for="startDate") Start Date
                 .col
-                    input#startDate.form-control(name="startDate")
+                    -var date = new Date(results.startDate);
+                    -var d = date.getDate()
+                    -var m = date.getMonth()+1
+                    -var y = date.getFullYear()
+                    input#startDate.form-control(name="startDate" value=`${m}/${d}/${y}`)
             .form-group
                 label.control-label(for="jobTitle") Job Title
                 .col
-                    input#jobTitle.form-control(name="jobTitle")
+                    input#jobTitle.form-control(name="jobTitle" value=results.jobTitle)
             .form-group
                 label.control-label(for="salary") Salary
                 .col
-                    input#salary.form-control(name="salary")
+                    input#salary.form-control(name="salary" value=results.salary)
+            input(type="hidden" name="_id" value=results._id)
             input(type="submit" value="Update")
-        br
+

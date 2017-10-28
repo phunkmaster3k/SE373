@@ -65,11 +65,11 @@ module.exports.delete = function(req, res){
                 removed = `${id} has been removed`;
                 return;
             })
-            .catch(function (err) {
+            .catch( (err) => {
                 removed = `${id} has not been removed`;
                 return err;
             })
-            .then( (err) => {   //alternative function syntax
+            .then( (err) => {
                 res.render('delete', {
                     removed : removed
                 });
@@ -88,35 +88,37 @@ module.exports.update = function(req, res){
     if (req.method === 'POST') {
          
         id = req.body._id;
-
         Employee
             .findById(id)
             .exec() 
-            .then(function(reviewData) {
-                // figure out why the data is not saving.        
-                reviewData.author = req.body.author;
-                reviewData.rating = req.body.rating;
-                reviewData.reviewText = req.body.reviewText;
+            .then(function(employeeData) {
 
-                debug(req.body);
-                return reviewData.save();
-                                
-            })
-            .then(function(){
-                msg = 'data has been updated';
+
+                employeeData.firstname = req.body.firstname;
+                employeeData.lastname = req.body.lastname;
+                employeeData.department = req.body.department;
+                employeeData.startDate = req.body.startDate;
+                employeeData.jobTitle = req.body.jobTitle;
+                employeeData.salary = req.body.salary;
+
+                return employeeData.save();
             })
             .catch(function(){
-                msg = 'data has NOT been updated';
+                msg = 'Data has NOT been updated';
+            })
+            .then(function(){
+                msg = 'Data has been updated';
             });
         
     }
-        
+
+
     Employee
     .findOne({ '_id': id })
     .exec()
-    .then(function(results){    
-        res.render('update', { 
-            title: 'Update Results',
+    .then(function(results){
+
+        res.render('update', {
             message: msg,
             results : results
         });
