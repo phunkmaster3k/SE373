@@ -15,7 +15,7 @@ function search(query) {
 function sort(query) {
     debug('sort setup');
     var sort = null;
-    if (query) {
+
         if (query._sort && typeof(query._sort) === 'string') {
             var prefix = 1;
             if (query._sort.match(/-/)) prefix = -1;
@@ -23,7 +23,7 @@ function sort(query) {
             sort = {};
             sort[field] = prefix;
         }
-    }
+
     return sort;
 }
 
