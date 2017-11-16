@@ -8,4 +8,9 @@ class Controller {
         return Promise.resolve()
     }
 
+    test() {
+        return Promise.resolve()
+    }
+
+
 }
