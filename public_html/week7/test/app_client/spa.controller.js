@@ -9,7 +9,7 @@ class Controller {
     }
 
     test() {
-        return Promise.resolve()
+        return this.Model.loadTestData()
     }
 
 

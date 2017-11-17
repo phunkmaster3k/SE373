@@ -4,4 +4,20 @@ class Model extends BaseModel {
         super()        
     }
 
+    toggle() {
+        this.dataBindModel.toggle = !this.dataBindModel.toggle
+        return Promise.resolve();
+    }
+
+    loadTestData() {
+        this.dataBindModel.fname = 'Nathan';
+        return Promise.resolve();
+    }
+
+    get yay() {
+        return this.dataBindModel.toggle
+    }
+
+
+
 }
